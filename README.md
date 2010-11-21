@@ -14,13 +14,37 @@ To add a simple API within CakePHP to create line, bar, area, and pie charts.
 
 	`git submodule add git://github.com/cjsaylor/Google-visualization-api-cakephp.git . `
 
+## Example
+
+	$data = array(
+	   'labels' => array(
+	      array('string' => 'Sample'),
+	      array('number' => 'Piston 1'),
+	      array('number' => 'Piston 2')
+	   ),
+	   'data' => array(
+	      array('S1', 74.01, 74.03),
+	      array('S2', 74.05, 74.04),
+	      array('S3', 74.03, 74.01),
+	      array('S4', 74.00, 74.02),
+	      array('S5', 74.12, 74.05),
+	      array('S6', 74.04, 74.04),
+	      array('S7', 74.05, 74.06),
+	      array('S8', 74.03, 74.02),
+	      array('S9', 74.01, 74.03),
+	      array('S10', 74.04, 74.01),
+	   ),
+	   'title' => 'Piston Ring Diameter',
+           'type' => 'line'
+	);
+
 ## Notes
 
 Currently Supports the following visualizations:
-* Area Chart
-* Bar Chart
-* Pie Chart
-* Line Chart
+- Area Chart
+- Bar Chart
+- Pie Chart
+- Line Chart
 
 I have plans to add support with additional visualization (namely, Gauge is next on the list).
 
