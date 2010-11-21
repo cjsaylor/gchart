@@ -38,9 +38,14 @@ To add a simple API within CakePHP to create line, bar, area, and pie charts.
            'type' => 'line'
 	);
 
+Produces the following:
+
+![Piston Ring Diameter Example Line Graph](http://img.chris-saylor.com/g_chart_example1.png "Line Chart Example")
+
 ## Notes
 
 Currently Supports the following visualizations:
+
 - Area Chart
 - Bar Chart
 - Pie Chart
