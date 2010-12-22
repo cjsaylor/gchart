@@ -67,8 +67,8 @@ class GChartHelper extends AppHelper {
    /**
     * Returns javascript that will create the visualization requested.
     *
-    * @param <type> $name
-    * @param <type> $data
+    * @param <string> $name
+    * @param <array> $data
     * @return <string>
     */
    public function visualize($name, $data=array()) {
@@ -91,9 +91,9 @@ class GChartHelper extends AppHelper {
    /**
     * Returns javascript that adds the data and label to be used in the visualization.
     *
-    * @param <type> $data
-    * @param <type> $graph_type
-    * @return <type>
+    * @param <array> $data
+    * @param <string> $graph_type
+    * @return <string>
     */
    private function loadDataAndLabels($data, $graph_type) {
       $o = '';
@@ -122,8 +122,8 @@ class GChartHelper extends AppHelper {
    /**
     * Loads the specific visualization package.  Will only load a package once.
     *
-    * @param <type> $type
-    * @return <type>
+    * @param <string> $type
+    * @return <string>
     */
    private function loadPackage($type) {
       $o = '';
@@ -139,9 +139,9 @@ class GChartHelper extends AppHelper {
    /**
     * Returns javascript to instantiate the Google visualization package.
     *
-    * @param <type> $name
-    * @param <type> $type
-    * @return <type>
+    * @param <string> $name
+    * @param <string> $type
+    * @return <string>
     */
    private function instantiateGraph($name, $type='area') {
       $o = "var chart = new google.visualization.{$this->chart_types[$type]['method']}(document.getElementById('$name'));";
