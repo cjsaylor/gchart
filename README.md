@@ -43,7 +43,7 @@ To add a simple API within CakePHP to create line, bar, area, and pie charts.
 
 Produces the following:
 
-![Piston Ring Diameter Example Line Graph](http://img.chris-saylor.com/g_chart_example1.png "Line Chart Example")
+![Piston Ring Diameter Example Line Graph](http://assets.chris-saylor.com/img/g_chart_example1.png "Line Chart Example")
 
 ## Notes
 
