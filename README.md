@@ -1,45 +1,66 @@
-# GChart Helper
 Google visualization API wrapper helper for CakePHP
 
 ## Purpose
 To add a simple API within CakePHP to create line, bar, area, and pie charts.
 
+## Requirements
+
+* CakePHP 2.* (1.3 is no longer supported, but available in the `1.3` branch)
+
 ## Installation
 
-- Clone g_chart into your helpers directory (either main app folder or plugin)
+_The structure has been updated to be loaded as a plugin for CakePHP 2.*._
 
-	`git clone git://github.com/cjsaylor/Google-visualization-api-cakephp.git . `
+1. Add the submodule as a plugin. (or simply copy the contents if you don't wish to manage a submodule)
 
-- Add as a git submodule
+`git clone git://github.com/cjsaylor/Google-visualization-api-cakephp.git app/Plugin/GChart`
 
-	`git submodule add git://github.com/cjsaylor/Google-visualization-api-cakephp.git . `
+2. Load the plugin in your bootstrap.
+
+`CakePlugin::load('GChart');`
+
+3. Make available as a helper if you app.
+
+`$this->helpers[] = 'GChart.GChart';`
 
 ## Example
 
-	$data = array(
-	   'labels' => array(
-	      array('string' => 'Sample'),
-	      array('number' => 'Piston 1'),
-	      array('number' => 'Piston 2')
-	   ),
-	   'data' => array(
-	      array('S1', 74.01, 74.03),
-	      array('S2', 74.05, 74.04),
-	      array('S3', 74.03, 74.01),
-	      array('S4', 74.00, 74.02),
-	      array('S5', 74.12, 74.05),
-	      array('S6', 74.04, 74.04),
-	      array('S7', 74.05, 74.06),
-	      array('S8', 74.03, 74.02),
-	      array('S9', 74.01, 74.03),
-	      array('S10', 74.04, 74.01),
-	   ),
-	   'title' => 'Piston Ring Diameter',
-           'type' => 'line'
-	);
+### In your controller
 
-        echo $this->GChart->start('test');
-        echo $this->GChart->visualize('test', $data);
+```php
+<?php
+
+$data = array(
+  'labels' => array(
+    array('string' => 'Sample'),
+    array('number' => 'Piston 1'),
+    array('number' => 'Piston 2')
+  ),
+  'data' => array(
+    array('S1', 74.01, 74.03),
+    array('S2', 74.05, 74.04),
+    array('S3', 74.03, 74.01),
+    array('S4', 74.00, 74.02),
+    array('S5', 74.12, 74.05),
+    array('S6', 74.04, 74.04),
+    array('S7', 74.05, 74.06),
+    array('S8', 74.03, 74.02),
+    array('S9', 74.01, 74.03),
+    array('S10', 74.04, 74.01),
+  ),
+  'title' => 'Piston Ring Diameter',
+  'type' => 'line'
+);
+```
+
+### In your view
+
+```php
+<?php
+
+echo $this->GChart->start('test');
+echo $this->GChart->visualize('test', $data);
+```
 
 Produces the following:
 
@@ -56,7 +77,7 @@ Currently Supports the following visualizations:
 
 I have plans to add support with additional visualization (namely, Gauge is next on the list).
 
-## Copyright (c) 2010 Chris Saylor
+## Copyright (c) 2010-2012 Chris Saylor
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
