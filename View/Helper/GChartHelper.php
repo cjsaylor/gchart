@@ -3,14 +3,15 @@
  * CakePHP helper that acts as a wrapper for Google's Visualization JS Package.
  */
 class GChartHelper extends AppHelper {
-	public $helpers = array('Html', 'Session', 'Javascript');
+
+	public $helpers = array('Html');
 
 	/**
 	* Available visualization types
 	*
 	* @var array
 	*/
-	private $chart_types = array(
+	protected $chart_types = array(
 		'area' => array(
 			'method'=>'AreaChart',
 			'data_method'=>'setValue',
@@ -43,14 +44,14 @@ class GChartHelper extends AppHelper {
 		)
 	);
 
-	private $packages_loaded = array();
+	protected $packages_loaded = array();
 
 	/**
 	 * Default options
 	 *
 	 * @var array
 	 */
-	private $defaults = array(
+	protected $defaults = array(
 		'title' => '',
 		'type' => 'area',
 		'width' => 450,
@@ -103,7 +104,7 @@ class GChartHelper extends AppHelper {
 	 * @param string $graph_type
 	 * @return string
 	 */
-	private function loadDataAndLabels($data, $graph_type) {
+	protected function loadDataAndLabels($data, $graph_type) {
 		$o = '';
 		foreach($data['labels'] as $label) {
 			foreach($label as $type => $label_name) {
@@ -133,7 +134,7 @@ class GChartHelper extends AppHelper {
 	 * @param string $type
 	 * @return string
 	 */
-	private function loadPackage($type) {
+	protected function loadPackage($type) {
 		$o = '';
 		if(!in_array($this->chart_types[$type]['package'], $this->packages_loaded)) {
 			$o.= '<script type="text/javascript">'."\n";
@@ -151,7 +152,7 @@ class GChartHelper extends AppHelper {
 	 * @param string $type
 	 * @return string
 	 */
-	private function instantiateGraph($name, $type='area') {
+	protected function instantiateGraph($name, $type='area') {
 		$o = "var chart = new google.visualization.{$this->chart_types[$type]['method']}(document.getElementById('$name'));";
 		return $o;
 	}
