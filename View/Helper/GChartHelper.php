@@ -136,11 +136,11 @@ class GChartHelper extends AppHelper {
 	 */
 	protected function loadPackage($type) {
 		$o = '';
-		if(!in_array($this->chart_types[$type]['package'], $this->packages_loaded)) {
+		if (empty($this->packages_loaded[$this->chart_types[$type]['package']])) {
 			$o.= '<script type="text/javascript">'."\n";
 			$o.= 'google.load("visualization", "1", {packages:["'.$this->chart_types[$type]['package'].'"]});'."\n";
 			$o.= '</script>'."\n";
-			$this->packages_loaded[] = $this->chart_types[$type]['package'];
+			$this->packages_loaded[$this->chart_types[$type]['package']] = true;
 		}
 		return $o;
 	}
