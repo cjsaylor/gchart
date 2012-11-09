@@ -23,6 +23,8 @@ _The structure has been updated to be loaded as a plugin for CakePHP 2.*._
 
 `$this->helpers[] = 'GChart.GChart';`
 
+4. Include Google's jsapi script in your layout/view: `<script src="https://www.google.com/jsapi"></script>`
+
 ## Example
 
 ### In your controller
