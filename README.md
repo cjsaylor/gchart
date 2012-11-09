@@ -11,19 +11,21 @@ To add a simple API within CakePHP to create line, bar, area, and pie charts.
 
 _The structure has been updated to be loaded as a plugin for CakePHP 2.*._
 
-1. Add the submodule as a plugin. (or simply copy the contents if you don't wish to manage a submodule)
+* Add the submodule as a plugin. (or simply copy the contents if you don't wish to manage a submodule)
 
 `git clone git://github.com/cjsaylor/Google-visualization-api-cakephp.git app/Plugin/GChart`
 
-2. Load the plugin in your bootstrap.
+* Load the plugin in your bootstrap.
 
 `CakePlugin::load('GChart');`
 
-3. Make available as a helper if you app.
+* Make available as a helper if you app.
 
 `$this->helpers[] = 'GChart.GChart';`
 
-4. Include Google's jsapi script in your layout/view: `<script src="https://www.google.com/jsapi"></script>`
+* Include Google's jsapi script in your layout/view.
+
+`<script src="https://www.google.com/jsapi"></script>`
 
 ## Example
 
