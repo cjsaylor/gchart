@@ -169,7 +169,9 @@ class GChartHelper extends AppHelper {
 	 * @return string
 	 */
 	protected function instantiateGraph($name, $type='area') {
-		$o = "var chart = new google.visualization.{$this->chart_types[$type]['method']}(document.getElementById('$name'));";
-		return $o;
+		$graphInitTemplate = '
+var chart = new google.visualization.%s(document.getElementById("%s"));
+		';
+		return sprintf(trim($graphInitTemplate), $this->chart_types[$type]['method'], $name);
 	}
 }
