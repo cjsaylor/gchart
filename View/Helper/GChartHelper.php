@@ -84,49 +84,62 @@ class GChartHelper extends AppHelper {
 	public function visualize($name, $data=array()) {
 		$data = array_merge($this->defaults, $data);
 
-		$o = $this->loadPackage($data['type']);
-		$o.= '<script type="text/javascript">
-			function drawChart'.$name.'() {
-			var data = new google.visualization.DataTable();
+		$o = $this->loadPackage($data['type']) . "\n";
+		$drawTemplate = '
+<script type="text/javascript">
+	google.setOnLoadCallback(function() {
+		var data = new google.visualization.DataTable(%s);
+		%s
+		chart.draw(data, {
+			width: %s,
+			height: %s,
+			is3D: %s,
+			legend: "%s",
+			title: "%s"
+		});
+	});
+</script>
 		';
-		$o.= $this->loadDataAndLabels($data, $data['type']);
-		$o.= $this->instantiateGraph($name, $data['type']);
-		$o.= "chart.draw(data, {width: {$data['width']}, height: {$data['height']}, is3D: {$data['is3D']}, legend: '{$data['legend']}', title: '{$data['title']}'});";
-		$o.= "}";
-		$o.= "google.setOnLoadCallback(drawChart$name);";
-		$o.= "</script>";
-		return $o;
+		$o .= sprintf($drawTemplate, 
+			$this->loadDataAndLabels($data), 
+			$this->instantiateGraph($name, $data['type']), 
+			$data['width'],
+			$data['height'],
+			$data['is3D'],
+			$data['legend'],
+			$data['title']
+		);
+		return trim($o);
    }
 
 	/**
-	 * Returns javascript that adds the data and label to be used in the visualization.
+	 * Returns json representation of labels and data for the visualization constructor.
 	 *
 	 * @param array $data
-	 * @param string $graph_type
 	 * @return string
 	 */
-	protected function loadDataAndLabels($data, $graph_type) {
-		$o = '';
-		foreach($data['labels'] as $label) {
-			foreach($label as $type => $label_name) {
-				$o.= "data.addColumn('$type', '$label_name');\n";
+	protected function loadDataAndLabels($data) {
+		$formatted = array(
+			'cols' => array(),
+			'rows' => array()
+		);
+		foreach ($data['labels'] as $labels) {
+			foreach ($labels as $type => $label) {
+				$formatted['cols'][] = compact('label', 'type');
 			}
 		}
-		$data_count = count($data['data']);
-		$label_count = count($data['labels']);
-		$o.= "data.addRows($data_count);\n";
-		for($i = 0; $i < $data_count; $i++) {
-			for($j=0; $j < $label_count; $j++) {
-				$value = $data['data'][$i][$j];
-				$type = key($data['labels'][$j]);
-				if($type == 'string') {
-					$o.= "data.{$this->chart_types[$graph_type]['data_method']}($i, $j, '$value');\n";
-				} else {
-					$o.= "data.{$this->chart_types[$graph_type]['data_method']}($i, $j, $value);\n";
-				}
+		foreach ($data['data'] as $datum) {
+			$keyVals = array();
+			foreach ($datum as $entry) {
+				$keyVals[] = array(
+					'v' => $entry
+				);
 			}
+			$formatted['rows'][] = array(
+				'c' => $keyVals
+			);
 		}
-		return $o;
+		return json_encode($formatted);
 	}
 
 	/**
