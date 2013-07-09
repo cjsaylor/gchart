@@ -71,8 +71,7 @@ class GChartHelper extends AppHelper {
 	 */
 	public function start($name, $options=array()) {
 		$options = array_merge(array('id' => $name), $options);
-		$o = $this->Html->tag('div', '', $options);
-		return $o;
+		return $this->Html->tag('div', '', $options);
 	}
 
 	/**
