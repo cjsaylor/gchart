@@ -1,4 +1,6 @@
 <?php
+
+App::uses('AppHelper', 'View/Helper');
 /**
  * CakePHP helper that acts as a wrapper for Google's Visualization JS Package.
  */
