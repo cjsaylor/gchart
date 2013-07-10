@@ -123,14 +123,11 @@ class GChartHelper extends AppHelper {
 			}
 		}
 		foreach ($data['data'] as $datum) {
-			$keyVals = array();
-			foreach ($datum as $entry) {
-				$keyVals[] = array(
-					'v' => $entry
-				);
-			}
+			$entry = array_map(function($entry) {
+				return array('v' => $entry);
+			}, $datum);
 			$formatted['rows'][] = array(
-				'c' => $keyVals
+				'c' => $entry
 			);
 		}
 		return json_encode($formatted);
