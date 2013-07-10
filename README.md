@@ -1,4 +1,4 @@
-# GChart [![Build Status](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp.png?branch=refactor)](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp)
+# GChart [![Build Status](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp.png](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp)
 
 Google visualization API wrapper helper for CakePHP
 
