@@ -1,3 +1,5 @@
+# GChart [![Build Status](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp.png?branch=refactor)](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp)
+
 Google visualization API wrapper helper for CakePHP
 
 ## Purpose
@@ -69,6 +71,28 @@ echo $this->GChart->visualize('test', $data);
 Produces the following:
 
 ![Piston Ring Diameter Example Line Graph](http://assets.chris-saylor.com/img/g_chart_example1.png "Line Chart Example")
+
+HTML Output:
+
+```html
+<div id="test"></div>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages: ["corechart"]});
+</script>
+<script type="text/javascript">
+  google.setOnLoadCallback(function() {
+    var data = new google.visualization.DataTable({"cols":[{"label":"Sample","type":"string"},{"label":"Piston 1","type":"number"},{"label":"Piston 2","type":"number"}],"rows":[{"c":[{"v":"S1"},{"v":74.01},{"v":74.03}]},{"c":[{"v":"S2"},{"v":74.05},{"v":74.04}]},{"c":[{"v":"S3"},{"v":74.03},{"v":74.01}]},{"c":[{"v":"S4"},{"v":74},{"v":74.02}]},{"c":[{"v":"S5"},{"v":74.12},{"v":74.05}]},{"c":[{"v":"S6"},{"v":74.04},{"v":74.04}]},{"c":[{"v":"S7"},{"v":74.05},{"v":74.06}]},{"c":[{"v":"S8"},{"v":74.03},{"v":74.02}]},{"c":[{"v":"S9"},{"v":74.01},{"v":74.03}]},{"c":[{"v":"S10"},{"v":74.04},{"v":74.01}]}]});
+    var chart = new google.visualization.LineChart(document.getElementById("test"));
+    chart.draw(data, {
+      width: 450,
+      height: 300,
+      is3D: true,
+      legend: "bottom",
+      title: "Piston Ring Diameter"
+    });
+  });
+</script>
+```
 
 ## Notes
 
