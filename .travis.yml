@@ -16,7 +16,7 @@ before_script:
   - set +H
 
 script:
-  - ./lib/Cake/Console/cake test GChart --stderr
+  - ./lib/Cake/Console/cake test GChart View/Helper/GChartHelper --stderr
 
 notifications:
   email: false
