@@ -16,32 +16,26 @@ class GChartHelper extends AppHelper {
 	protected $chart_types = array(
 		'area' => array(
 			'method'=>'AreaChart',
-			'data_method'=>'setValue',
 			'package' => 'corechart'
 		),
 		'bar' => array(
 			'method' => 'BarChart',
-			'data_method' => 'setValue',
 			'package' => 'corechart'
 		),
 		'pie' => array(
 			'method' => 'PieChart',
-			'data_method' => 'setValue',
 			'package' => 'corechart'
 		),
 		'line' => array(
 			'method' => 'LineChart',
-			'data_method' => 'setValue',
 			'package' => 'corechart'
 		),
 		'table' => array(
 			'method' => 'Table',
-			'data_method' => 'setCell',
 			'package' => 'table'
 		),
 		'geochart' => array(
 			'method' => 'GeoChart',
-			'data_method' => 'setValue',
 			'package' => 'geochart'
 		)
 	);
@@ -84,7 +78,7 @@ class GChartHelper extends AppHelper {
 	public function visualize($name, $data=array()) {
 		$data = array_merge($this->defaults, $data);
 
-		$o = $this->loadPackage($data['type']) . "\n";
+		$o = $this->loadPackage($data['type']);
 		$drawTemplate = '
 <script type="text/javascript">
 	google.setOnLoadCallback(function() {
