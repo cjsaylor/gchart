@@ -1,4 +1,4 @@
-# GChart [![Build Status](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp.png)](https://travis-ci.org/cjsaylor/Google-visualization-api-cakephp)
+# GChart [![Build Status](https://travis-ci.org/cjsaylor/gchart.png)](https://travis-ci.org/cjsaylor/gchart)
 
 Google visualization API wrapper helper for CakePHP that adds a simple API within CakePHP to create line, bar, area, and pie charts.
 
@@ -25,7 +25,7 @@ Ensure require is present in composer.json. This will install the plugin into Pl
 
 * Add the submodule as a plugin. (or simply copy the contents)
 
-`git clone git://github.com/cjsaylor/Google-visualization-api-cakephp.git app/Plugin/GChart`
+`git clone git://github.com/cjsaylor/gchart.git app/Plugin/GChart`
 
 ### CakePHP Setup
 
