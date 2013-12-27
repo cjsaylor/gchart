@@ -13,8 +13,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/cjsaylor/Google-visualization-api-cakephp/issues",
-        "source": "https://github.com/cjsaylor/Google-visualization-api-cakephp"
+        "issues": "https://github.com/cjsaylor/gchart/issues",
+        "source": "https://github.com/cjsaylor/gchart"
     },
     "require": {
         "php": ">=5.3.0",
