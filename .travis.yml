@@ -11,7 +11,7 @@ env:
 
 before_script:
   - git clone git://github.com/cakephp/cakephp ../cakephp && cd ../cakephp && git checkout $CAKE_VERSION
-  - cp -R ../Google-visualization-api-cakephp plugins/GChart
+  - cp -R ../gchart plugins/GChart
   - chmod -R 777 ../cakephp/app/tmp
   - set +H
 
