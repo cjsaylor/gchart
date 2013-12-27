@@ -1,0 +1,29 @@
+{
+    "name": "cjsaylor/gchart",
+    "description": "CakePHP helper wrapper for Google's Visualization API",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "visualization", "google", "charts", "plugin"],
+    "homepage": "https://github.com/cakephp/debug_kit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Saylor",
+            "homepage": "http://chris-saylor.com",
+            "role": "Author"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/cjsaylor/Google-visualization-api-cakephp/issues",
+        "source": "https://github.com/cjsaylor/Google-visualization-api-cakephp"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "composer/installers": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        },
+        "installer-name": "GChart"
+    }
+}
