@@ -10,10 +10,14 @@ env:
   - CAKE_VERSION=2.4.4
   - CAKE_VERSION=master
 
-before_script:
+install:
   - git clone git://github.com/cakephp/cakephp ../cakephp && cd ../cakephp && git checkout $CAKE_VERSION
   - cp -R ../gchart plugins/GChart
   - chmod -R 777 ../cakephp/app/tmp
+  - sh -c "composer global require 'phpunit/phpunit=3.7.33'"
+  - sh -c "ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit ../cakephp/vendors/PHPUnit"
+
+before_script:
   - set +H
 
 script:
