@@ -94,9 +94,9 @@ class GChartHelper extends AppHelper {
 	});
 </script>
 		';
-		$o .= sprintf($drawTemplate, 
-			$this->loadDataAndLabels($data), 
-			$this->instantiateGraph($name, $data['type']), 
+		$o .= sprintf($drawTemplate,
+			$this->loadDataAndLabels($data),
+			$this->instantiateGraph($name, $data['type']),
 			$data['width'],
 			$data['height'],
 			$data['is3D'],
@@ -124,13 +124,25 @@ class GChartHelper extends AppHelper {
 		}
 		foreach ($data['data'] as $datum) {
 			$entry = array_map(function($entry) {
+				// The entry may have come in as an array...
+				//   if so, we just use it as is.
+				if (is_array($entry)) {
+					return $entry;
+				}
+				// The entry is a simple value, so we wrap it in [v=>...]
 				return array('v' => $entry);
 			}, $datum);
 			$formatted['rows'][] = array(
 				'c' => $entry
 			);
 		}
-		return json_encode($formatted);
+		$json = json_encode($formatted);
+		if (strpos($json, 'new Date') != false) {
+			// did we json_encode a JS Date creation?
+			//   remove quotes around the "new Date()" value
+			$json = preg_replace('#"(new Date\([0-9, ]+\))"#', '$1', $json);
+		}
+		return $json;
 	}
 
 	/**
